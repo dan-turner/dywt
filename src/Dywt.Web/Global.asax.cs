@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Dywt.Web.Infrastructure;
 
 namespace Dywt.Web
 {
@@ -17,6 +19,8 @@ namespace Dywt.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            var documentStore = DocumentStoreFactory.Create("RavenDB");
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
