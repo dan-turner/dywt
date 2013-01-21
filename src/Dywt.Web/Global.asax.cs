@@ -22,6 +22,7 @@ namespace Dywt.Web
 
             var documentStore = DocumentStoreFactory.Create("RavenDB");
 
+            AutofacConfig.RegisterModules(documentStore);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
