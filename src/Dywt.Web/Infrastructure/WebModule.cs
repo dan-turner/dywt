@@ -14,17 +14,8 @@ namespace Dywt.Web.Infrastructure
     {
         private static readonly Assembly WebAssembly = typeof(WebModule).Assembly;
 
-        private readonly IDocumentStore _documentStore;
-
-        public WebModule(IDocumentStore documentStore)
-        {
-            _documentStore = documentStore;
-        }
-
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterInstance(_documentStore).As<IDocumentStore>();
-
             builder.RegisterModule<AutofacWebTypesModule>();
             builder.RegisterControllers(WebAssembly).PropertiesAutowired();
         }

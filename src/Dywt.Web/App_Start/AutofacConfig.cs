@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Dywt.App.Infrastructure;
 using Dywt.Web.Infrastructure;
 using Raven.Client;
 using System;
@@ -15,7 +16,8 @@ namespace Dywt.Web
         public static void RegisterModules(IDocumentStore documentStore)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterModule(new WebModule(documentStore));
+            builder.RegisterModule(new WebModule());
+            builder.RegisterModule(new AppModule(documentStore));
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
