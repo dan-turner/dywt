@@ -1,0 +1,23 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+output/
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+_ReSharper.*/
+*.suo
+*.DotSettings
+*.user
+Backup/
+UpgradeLog*.*
+*.orig
+
+Src/*/bin/
+Src/*/obj/
+Src/PuntersHQ.Mobile/App_Data/
