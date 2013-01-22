@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Dywt.Web.Framework;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Dywt.Web.Filters;
@@ -15,7 +16,7 @@ namespace Dywt.Web.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class AccountController : DywtController
     {
         //
         // GET: /Account/Login

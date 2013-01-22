@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dywt.Web.Framework;
 
 namespace Dywt.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DywtController
     {
         public ActionResult Index()
         {
