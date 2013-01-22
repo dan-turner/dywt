@@ -191,9 +191,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NotificationExtensions.cs" />
     <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\WebModule.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Notifications\Notification.cs" />
+    <Compile Include="Notifications\Notifier.cs" />
+    <Compile Include="Notifications\NotifierActionFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +311,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

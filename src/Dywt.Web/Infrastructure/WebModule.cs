@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Dywt.Mobile.Notifications;
 using Raven.Client;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Dywt.Web.Infrastructure
         {
             builder.RegisterModule<AutofacWebTypesModule>();
             builder.RegisterControllers(WebAssembly).PropertiesAutowired();
+            builder.RegisterType<Notifier>().As<INotifier>().InstancePerLifetimeScope();
         }
     }
 }

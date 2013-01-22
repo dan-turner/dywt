@@ -1,0 +1,20 @@
+﻿@using Dywt.Mobile.Notifications
+@model IDictionary<NotificationType, List<Notification>>
+<div data-role="content">
+    <ul id="notifications" data-role="listview" data-inset="false">
+        @foreach(var key in Model.Keys)
+        {
+            if(Model[key].Any())
+            {
+                foreach(var notif in Model[key])
+                {
+                    var icon = notif.Type == NotificationType.Error ? "delete"
+                                   : notif.Type == NotificationType.Warn ? "alert"
+                                   : notif.Type == NotificationType.Info ? "info"
+                                         : "check";
+                    <li data-icon="@icon"><a href="javascript:void(0)">@String.Format(notif.Message, notif.FormatArgs)</a></li>
+                }
+            }
+        }
+    </ul>
+</div>
