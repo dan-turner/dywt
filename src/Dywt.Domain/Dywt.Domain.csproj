@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="DayEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserId.cs" />

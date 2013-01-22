@@ -20,18 +20,18 @@ namespace Dywt.Web.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your app description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }
