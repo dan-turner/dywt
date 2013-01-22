@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Module = Autofac.Module;
+using System.Security.Principal;
 
 namespace Dywt.Web.Infrastructure
 {
@@ -20,6 +21,7 @@ namespace Dywt.Web.Infrastructure
             builder.RegisterModule<AutofacWebTypesModule>();
             builder.RegisterControllers(WebAssembly).PropertiesAutowired();
             builder.RegisterType<Notifier>().As<INotifier>().InstancePerLifetimeScope();
+            builder.Register(x => x.Resolve<HttpContextBase>().User).As<IPrincipal>();
         }
     }
 }

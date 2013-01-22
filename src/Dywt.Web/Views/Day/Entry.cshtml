@@ -1,0 +1,34 @@
+﻿@model Dywt.App.Models.DayEntryModel
+@{
+    ViewBag.Title = Model.Command.Date.ToShortDateString();
+}
+
+<h2>Did you work on @Model.Command.Date.ToLongDateString()?</h2>
+
+@if(Model.PreviousAnswer != null)
+{
+    if (Model.PreviousAnswer.DidYouWork)
+    {
+        <p>You seemed to say <strong>Yes</strong> on <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortDateString()</strong> at <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortTimeString()</strong></p>
+    }
+    else
+    {
+        <p>You seemed to say <strong>No</strong> on <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortDateString()</strong> at <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortTimeString()</strong></p>
+    }
+}
+
+<div class="answers">
+    @using(Html.BeginForm())
+    {
+        @Html.HiddenFor(m => m.Command.Date)
+        @Html.Hidden("Command.DidYouWork", true)
+        <input type="submit" value="Yes" />
+    }
+
+    @using(Html.BeginForm())
+    {
+        @Html.HiddenFor(m => m.Command.Date)
+        @Html.Hidden("Command.DidYouWork", false)
+        <input type="submit" value="No" />
+    }
+</div>

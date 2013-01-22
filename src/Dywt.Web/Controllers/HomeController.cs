@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dywt.Web.Framework;
+using Dywt.App;
 
 namespace Dywt.Web.Controllers
 {
@@ -11,9 +12,12 @@ namespace Dywt.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Entry", "Day");
+            }
 
-            return View();
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult About()

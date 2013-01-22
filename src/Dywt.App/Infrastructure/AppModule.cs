@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Security.Principal;
 using Autofac;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Dywt.App.Infrastructure.Autofac;
 using Dywt.App.Models.Factories;
 using Raven.Client;
 using Module = Autofac.Module;
+using Dywt.Domain;
 
 namespace Dywt.App.Infrastructure
 {
@@ -31,10 +33,17 @@ namespace Dywt.App.Infrastructure
             builder.Register(x => _documentStore.OpenSession()).As<IDocumentSession>()
                 .InstancePerLifetimeScope();
 
+            builder.Register(x => CreateUserId(x.Resolve<IPrincipal>())).AsSelf();
+
             builder.RegisterAssemblyTypes(AppAssembly)
                 .Where(IsHandlerType)
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+        }
+
+        private UserId CreateUserId(IPrincipal principal)
+        {
+            return !principal.Identity.IsAuthenticated ? null : new UserId(principal.Identity.Name);
         }
 
         private static bool IsHandlerType(Type type)

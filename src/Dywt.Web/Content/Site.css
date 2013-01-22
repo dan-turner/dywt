@@ -754,3 +754,11 @@ tr.pager td {
             margin: 0;
         }
 }
+
+.day.entry .answers form {
+    float: left;
+}
+.day.entry .answers form input {
+    width: 60px;
+    height: 45px;
+}
