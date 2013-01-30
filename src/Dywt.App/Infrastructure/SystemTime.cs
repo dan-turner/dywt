@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Dywt.App
+namespace Dywt.App.Infrastructure
 {
     public static class SystemTime
     {
         public static Func<DateTime> UtcNow = () => DateTime.Now.ToUniversalTime();
-        public static Func<DateTime> LocalNow = () => UtcNow().ToLocalTime();
     }
 }

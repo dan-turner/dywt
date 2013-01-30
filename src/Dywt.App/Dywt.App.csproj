@@ -65,11 +65,12 @@
     <Compile Include="Infrastructure\IModelBuilder.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RavenDB\RavenUnitOfWork.cs" />
+    <Compile Include="Infrastructure\UserTime.cs" />
     <Compile Include="Models\DayEntryModel.cs" />
     <Compile Include="Models\Factories\DayEntryModelFactory.cs" />
     <Compile Include="Models\Factories\IModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemTime.cs" />
+    <Compile Include="Infrastructure\SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

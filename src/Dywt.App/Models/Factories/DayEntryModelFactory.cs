@@ -1,4 +1,5 @@
-﻿using Dywt.Domain;
+﻿using Dywt.App.Infrastructure;
+using Dywt.Domain;
 using Raven.Client;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Dywt.App.Models.Factories
 
             if (entry != null)
             {
-                model.PreviousAnswer = new DayEntryModel.Previous(entry.DidYouWork, entry.Timestamp.ToLocalTime());
+                model.PreviousAnswer = new DayEntryModel.Previous(entry.DidYouWork, UserTime.FromUtc(entry.Timestamp));
             }
 
             return model;

@@ -1,5 +1,6 @@
 ﻿using Dywt.App;
 using Dywt.App.Commands;
+using Dywt.App.Infrastructure;
 using Dywt.App.Models;
 using Dywt.Web.Framework;
 using System;
@@ -17,7 +18,7 @@ namespace Dywt.Web.Controllers
         {
             if(!date.HasValue)
             {
-                var today = SystemTime.LocalNow().Date;
+                var today = UserTime.LocalNow().Date;
                 return RedirectToAction("Entry", new { date = today.ToString("yyyy-MM-dd") });
             }
 
