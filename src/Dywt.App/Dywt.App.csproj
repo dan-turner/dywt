@@ -57,7 +57,9 @@
     </Compile>
     <Compile Include="Commands\DayEntryCommand.cs" />
     <Compile Include="Commands\Handlers\DayEntryCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\HolidayEntryCommandHandler.cs" />
     <Compile Include="Commands\Handlers\ICommandHandler.cs" />
+    <Compile Include="Commands\HolidayEntryCommand.cs" />
     <Compile Include="Infrastructure\AppModule.cs" />
     <Compile Include="Infrastructure\Autofac\AutofacCommandBus.cs" />
     <Compile Include="Infrastructure\Autofac\AutofacModelBuilder.cs" />

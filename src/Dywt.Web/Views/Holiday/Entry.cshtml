@@ -1,0 +1,27 @@
+﻿@model Dywt.App.Commands.HolidayEntryCommand
+
+@{
+    ViewBag.Title = "Holiday";
+}
+
+<h2>When are you going on holidays?</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Trip Details</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.DateFrom)
+                @Html.TextBoxFor(m => m.DateFrom)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.DateTo)
+                @Html.TextBoxFor(m => m.DateTo)
+            </li>
+        </ol>
+        <input type="submit" value="Submit" />
+    </fieldset>
+}
