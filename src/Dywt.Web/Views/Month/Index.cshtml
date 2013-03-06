@@ -1,0 +1,17 @@
+﻿@model Dywt.App.Models.MonthViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach(var tile in Model.Tiles)
+    {
+        <li>
+            <h1>@tile.Date.ToShortDateString()</h1>
+            <p>Did you work? @tile.DidYouWork</p>
+        </li>
+    }
+</ul>

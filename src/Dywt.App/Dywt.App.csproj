@@ -69,6 +69,8 @@
     <Compile Include="Infrastructure\RavenDB\RavenUnitOfWork.cs" />
     <Compile Include="Infrastructure\UserTime.cs" />
     <Compile Include="Models\DayEntryModel.cs" />
+    <Compile Include="Models\Factories\MonthViewModelFactory.cs" />
+    <Compile Include="Models\MonthViewModel.cs" />
     <Compile Include="Models\Factories\DayEntryModelFactory.cs" />
     <Compile Include="Models\Factories\IModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
