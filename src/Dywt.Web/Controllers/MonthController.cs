@@ -8,6 +8,7 @@ using Dywt.Web.Framework;
 
 namespace Dywt.Web.Controllers
 {
+    [Authorize]
     public class MonthController : DywtController
     {
         public ActionResult Index(int year, int month)
