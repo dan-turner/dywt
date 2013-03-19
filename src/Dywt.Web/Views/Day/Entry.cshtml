@@ -3,6 +3,12 @@
     ViewBag.Title = Model.Command.Date.ToShortDateString();
 }
 
+<div role="navigation">
+    <a href="@Url.Action("Entry", "Day", new { date = Model.PreviousDay.ToString("yyyy-MM-dd") })">&lt; @Model.PreviousDay.ToShortDateString()</a>
+    | <a href="@Url.Action("Entry", "Day", new { date = Model.NextDay.ToString("yyyy-MM-dd") })">@Model.NextDay.ToShortDateString() &gt;</a>
+    | @Html.ActionLink(Model.Command.Date.ToString("MMMM yyyy"), "Index", "Month", new { year = Model.Command.Date.Year, month = Model.Command.Date.Month }, null)
+</div>
+
 <h2>Did you work on @Model.Command.Date.ToLongDateString()?</h2>
 
 @if(Model.PreviousAnswer != null)
@@ -17,7 +23,7 @@
     }
 }
 
-<div class="answers">
+<div class="answers cf">
     @using(Html.BeginForm())
     {
         @Html.HiddenFor(m => m.Command.Date)

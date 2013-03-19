@@ -6,6 +6,11 @@
     ViewBag.Title = Model.TheFirst.ToString("MMMM yyyy");
 }
 
+<div role="navigation">
+    <a href="@Url.Action("Index", new { year = Model.PreviousMonth.Year, month = Model.PreviousMonth.Month })">&lt; @Model.PreviousMonth.ToString("MMMM")</a>
+    | <a href="@Url.Action("Index", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month })">@Model.NextMonth.ToString("MMMM") &gt;</a>
+</div>
+
 <h2>@ViewBag.Title</h2>
 
 <ol class="calendar cf">
@@ -22,8 +27,3 @@
         </li>
     }
 </ol>
-
-<div role="navigation">
-    @Html.ActionLink(Model.PreviousMonth.ToString("MMMM"), "Index", new { year = Model.PreviousMonth.Year, month = Model.PreviousMonth.Month })
-    @Html.ActionLink(Model.NextMonth.ToString("MMMM"), "Index", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month })
-</div>

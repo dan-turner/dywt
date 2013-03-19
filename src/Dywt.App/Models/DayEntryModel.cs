@@ -17,6 +17,16 @@ namespace Dywt.App.Models
 
         public Previous PreviousAnswer { get; set; }
 
+        public DateTime PreviousDay
+        {
+            get { return Command.Date.AddDays(-1); }
+        }
+
+        public DateTime NextDay
+        {
+            get { return Command.Date.AddDays(1); }
+        }
+
         public DayEntryCommand Command
         {
             get { return _command; }
