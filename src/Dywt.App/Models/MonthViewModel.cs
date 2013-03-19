@@ -14,6 +14,14 @@ namespace Dywt.App.Models
         }
 
         public DateTime TheFirst { get; private set; }
+        public DateTime PreviousMonth
+        {
+            get { return TheFirst.AddMonths(-1); }
+        }
+        public DateTime NextMonth
+        {
+            get { return TheFirst.AddMonths(1); }
+        }
         public IList<Tile> Tiles { get; private set; }
 
         public class Tile

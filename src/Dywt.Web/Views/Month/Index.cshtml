@@ -1,17 +1,29 @@
-﻿@model Dywt.App.Models.MonthViewModel
+﻿@using Dywt.App.Infrastructure
+@using Dywt.Web
+@model Dywt.App.Models.MonthViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.TheFirst.ToString("MMMM yyyy");
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<ul>
+<ol class="calendar cf">
     @foreach(var tile in Model.Tiles)
     {
-        <li>
-            <h1>@tile.Date.ToShortDateString()</h1>
-            <p>Did you work? @tile.DidYouWork</p>
+        <li class="@tile.DidYouWork.ToLabels("worked", "away", "unknown") @((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", ""))">
+            <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })">
+                <span class="day @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))" aria-hidden="true" role="presentation">@tile.Date.Day</span>
+                <h3>@tile.Date.ToShortDateString()</h3>
+                <p>
+                    @tile.DidYouWork.ToLabels("Worked", "Away", "Unknown")
+                </p>
+            </a>
         </li>
     }
-</ul>
+</ol>
+
+<div role="navigation">
+    @Html.ActionLink(Model.PreviousMonth.ToString("MMMM"), "Index", new { year = Model.PreviousMonth.Year, month = Model.PreviousMonth.Month })
+    @Html.ActionLink(Model.NextMonth.ToString("MMMM"), "Index", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month })
+</div>

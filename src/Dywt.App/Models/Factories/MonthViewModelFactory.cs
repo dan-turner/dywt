@@ -24,31 +24,23 @@ namespace Dywt.App.Models.Factories
             var dateFrom = theFirst;
             var dateTo = theFirst.AddMonths(1).AddDays(-1);
 
-            if (dateTo.DayOfWeek == DayOfWeek.Monday)
-            {
-                dateTo = dateTo.AddDays(-7);
-            }
             while(dateFrom.DayOfWeek != DayOfWeek.Monday)
             {
                 dateFrom = dateFrom.AddDays(-1);
-            }
-            if(dateTo.DayOfWeek == DayOfWeek.Sunday)
-            {
-                dateTo = dateTo.AddDays(7);
             }
             while (dateTo.DayOfWeek != DayOfWeek.Sunday)
             {
                 dateTo = dateTo.AddDays(1);
             }
 
-            var entries = _session.Query<DayEntry>().Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
+            var entries = _session.Query<DayEntry>().Where(x => x.UserId.Value == _userId.Value && x.Date >= dateFrom && x.Date <= dateTo).ToList();
 
             var model = new MonthViewModel(theFirst);
 
             for (var date = dateFrom; date <= dateTo; date = date.AddDays(1))
             {
                 var entry = entries.SingleOrDefault(x => x.Date.Date.Equals(date.Date));
-                var didYouWork = (entry != null) && entry.DidYouWork;
+                var didYouWork = (entry != null) ? entry.DidYouWork : (bool?)null;
                 var tile = new MonthViewModel.Tile(date, didYouWork);
                 model.Tiles.Add(tile);
             }

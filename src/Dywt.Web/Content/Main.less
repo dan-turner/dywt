@@ -1,0 +1,52 @@
+ol.calendar {
+	margin: 0; padding: 0;
+	width: 910px;
+	@border-style: solid 1px #ddd;
+	border-top: @border-style;
+	border-left: @border-style;
+
+	li {
+		margin: 0; padding: 0;
+		float: left;
+		width: 129px;
+		list-style: none;
+		border-right: @border-style;
+		border-bottom: @border-style;
+		background-color: #eef;
+
+		> a {
+			display: block;
+			padding: 1em;
+		}
+
+		.day {
+			display: block;
+			float: right;			
+		}
+
+		.day.today {
+			font-weight: bold;
+		}
+
+		h3 {
+			position: absolute;
+			left: -99999px;
+		}
+
+		p {
+			margin-top: 6em;
+		}
+
+		&.worked {
+			background-color: #efe;
+		}
+
+		&.away {
+			background-color: #fee;
+		}
+
+		&.filler {
+			background-color: #eee;
+		}
+	}
+}

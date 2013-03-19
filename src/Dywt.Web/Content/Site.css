@@ -9,7 +9,7 @@ body {
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -50,7 +50,7 @@ mark {
     float: right;
 }
 
-.clear-fix:after {
+.clear-fix:after, .cf:after {
     content: ".";
     clear: both;
     display: block;
@@ -60,7 +60,7 @@ mark {
 
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
+    color: #333;
     margin-bottom: 0;
     padding-bottom: 0;
 }
