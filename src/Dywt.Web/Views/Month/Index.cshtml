@@ -6,7 +6,7 @@
     ViewBag.Title = Model.TheFirst.ToString("MMMM yyyy");
 }
 
-<div role="navigation">
+<div class="nav" role="navigation">
     <a href="@Url.Action("Index", new { year = Model.PreviousMonth.Year, month = Model.PreviousMonth.Month })">&lt; @Model.PreviousMonth.ToString("MMMM")</a>
     | <a href="@Url.Action("Index", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month })">@Model.NextMonth.ToString("MMMM") &gt;</a>
 </div>
@@ -16,12 +16,12 @@
 <ol class="calendar cf">
     @foreach(var tile in Model.Tiles)
     {
-        <li class="@tile.DidYouWork.ToLabels("worked", "away", "unknown") @((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", ""))">
+        <li class="@tile.DidYouWork.ToLabels("worked", "away", "unknown") @((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", "")) @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))">
             <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })">
-                <span class="day @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))" aria-hidden="true" role="presentation">@tile.Date.Day</span>
+                <span class="day" aria-hidden="true" role="presentation">@((tile.Date == UserTime.LocalNow().Date).ToLabels("Today", tile.Date.Day.ToString()))</span>
                 <h3>@tile.Date.ToShortDateString()</h3>
                 <p>
-                    @tile.DidYouWork.ToLabels("Worked", "Away", "Unknown")
+                    @Html.Raw(tile.DidYouWork.ToLabels("Yes", "No", "&nbsp;"))
                 </p>
             </a>
         </li>

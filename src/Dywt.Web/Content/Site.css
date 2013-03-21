@@ -9,7 +9,7 @@ body {
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -99,7 +99,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #fff;
     clear: both;
     padding-bottom: 35px;
 }
@@ -128,19 +128,7 @@ footer {
 
 /* site title
 ----------------------------------------------------------*/
-.site-title {
-    color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 2.3em;
-    margin: 0;
-}
 
-.site-title a, .site-title a:hover, .site-title a:active {
-    background: none;
-    color: #c8c8c8;
-    outline: none;
-    text-decoration: none;
-}
 
 
 /* login
@@ -446,19 +434,6 @@ textarea {
     input[type="checkbox"] {
         background: transparent;
         border: inherit;
-        width: auto;
-    }
-
-    input[type="submit"],
-    input[type="button"],
-    button {
-        background-color: #d3dce0;
-        border: 1px solid #787878;
-        cursor: pointer;
-        font-size: 1.2em;
-        font-weight: 600;
-        padding: 7px;
-        margin-right: 8px;
         width: auto;
     }
 
