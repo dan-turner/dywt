@@ -17,7 +17,7 @@
     @foreach(var tile in Model.Tiles)
     {
         <li class="@tile.DidYouWork.ToLabels("worked", "away", "unknown") @((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", "")) @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))">
-            <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })">
+            <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })" data-current-answer="@tile.DidYouWork">
                 <span class="day" aria-hidden="true" role="presentation">@((tile.Date == UserTime.LocalNow().Date).ToLabels("Today", tile.Date.Day.ToString()))</span>
                 <h3>@tile.Date.ToShortDateString()</h3>
                 <p>
