@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Dywt.Web.Framework;
 using Dywt.App;
+using Dywt.App.Infrastructure;
 
 namespace Dywt.Web.Controllers
 {
@@ -14,7 +15,8 @@ namespace Dywt.Web.Controllers
         {
             if(User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Entry", "Day");
+                var today = UserTime.LocalNow().Date;
+                return RedirectToAction("Index", "Month", new { today.Year, today.Month });
             }
 
             return RedirectToAction("Login", "Account");
