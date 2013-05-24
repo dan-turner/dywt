@@ -15,7 +15,7 @@ $(function () {
             return 'False';
         }
         else if (currentAnswer === 'False') {
-            return '';
+            return 'True';
         }
         return 'True';
     }
@@ -48,10 +48,10 @@ $(function () {
 
             var url = anchor.attr('href');
 
-            var requestPending = monthView.data('request-pending');
+            var requestPending = anchor.data('request-pending');
 
             if (!requestPending) {
-                monthView.data('request-pending', true);
+                anchor.data('request-pending', true);
                 $.post(url, { DidYouWork: newAnswer })
                     .done(function () {
                         parent.removeClass(currentClass).addClass(newClass);
@@ -59,7 +59,7 @@ $(function () {
                         paragraph.html(getTextForAnswer(newAnswer));
                     })
                     .always(function () {
-                        monthView.data('request-pending', false);
+                        anchor.data('request-pending', false);
                     });
             }
         }
