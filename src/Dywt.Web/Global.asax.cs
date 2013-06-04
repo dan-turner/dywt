@@ -24,9 +24,11 @@ namespace Dywt.Web
 
             var documentStore = DocumentStoreFactory.Create("RavenDB");
 
+            var requireHttps = bool.Parse(ConfigurationManager.AppSettings["RequireHttps"]);
+
             AutofacConfig.RegisterModules(documentStore);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, requireHttps);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();

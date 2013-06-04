@@ -6,10 +6,15 @@ namespace Dywt.Web
 {
     public class FilterConfig
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters, bool requireHttps)
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AtomicFilter());
+
+            if (requireHttps)
+            {
+                filters.Add(new RequireHttpsAttribute());
+            }
         }
     }
 }
