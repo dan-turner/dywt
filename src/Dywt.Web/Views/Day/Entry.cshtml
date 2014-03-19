@@ -13,28 +13,14 @@
 
 @if(Model.PreviousAnswer != null)
 {
-    if (Model.PreviousAnswer.DidYouWork)
-    {
-        <p>You seemed to say <strong>Yes</strong> on <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortDateString()</strong> at <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortTimeString()</strong></p>
-    }
-    else
-    {
-        <p>You seemed to say <strong>No</strong> on <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortDateString()</strong> at <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortTimeString()</strong></p>
-    }
+    <p>You seemed to say <strong>@Model.PreviousAnswer.HoursWorked hrs</strong> on <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortDateString()</strong> at <strong>@Model.PreviousAnswer.TimeStamp.DateTime.ToShortTimeString()</strong></p>
 }
 
 <div class="answers cf">
     @using(Html.BeginForm())
     {
         @Html.HiddenFor(m => m.Command.Date)
-        @Html.Hidden("Command.DidYouWork", true)
-        <input type="submit" value="Yes" />
-    }
-
-    @using(Html.BeginForm())
-    {
-        @Html.HiddenFor(m => m.Command.Date)
-        @Html.Hidden("Command.DidYouWork", false)
-        <input type="submit" value="No" />
+        @Html.TextBoxFor(m => m.Command.HoursWorked)<span>hrs</span>
+        <input type="submit" value="Save" />
     }
 </div>

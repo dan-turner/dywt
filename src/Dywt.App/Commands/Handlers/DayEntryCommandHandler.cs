@@ -21,8 +21,7 @@ namespace Dywt.App.Commands.Handlers
 
         public void Execute(DayEntryCommand command)
         {
-            var hours = command.DidYouWork ? 8 : 0;
-            var entry = new DayEntry(_userId, command.Date, hours, SystemTime.UtcNow());
+            var entry = new DayEntry(_userId, command.Date, command.HoursWorked, SystemTime.UtcNow());
             _session.Store(entry);
         }
     }

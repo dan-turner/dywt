@@ -7,7 +7,12 @@ namespace Dywt.App.Commands
 {
     public class DayEntryCommand
     {
+        public DayEntryCommand()
+        {
+            HoursWorked = 8;
+        }
+
         public DateTime Date { get; set; }
-        public bool DidYouWork { get; set; }
+        public int HoursWorked { get; set; }
     }
 }

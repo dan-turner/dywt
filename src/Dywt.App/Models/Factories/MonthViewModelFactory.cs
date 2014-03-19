@@ -40,9 +40,9 @@ namespace Dywt.App.Models.Factories
             for (var date = dateFrom; date <= dateTo; date = date.AddDays(1))
             {
                 var entry = entries.SingleOrDefault(x => x.Date.Date.Equals(date.Date));
-                var didYouWork = (entry != null) ? entry.HoursWorked > 0 : (bool?)null;
-                var tile = new MonthViewModel.Tile(date, didYouWork);
-                model.Tiles.Add(tile);
+                var hoursWorked = (entry != null) ? entry.HoursWorked : (int?)null;
+                var tile = new MonthViewModel.Tile(date, hoursWorked);
+                model.Add(tile);
             }
 
             return model;

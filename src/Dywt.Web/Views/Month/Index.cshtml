@@ -11,17 +11,24 @@
     | <a href="@Url.Action("Index", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month })">@Model.NextMonth.ToString("MMMM") &gt;</a>
 </div>
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title - @string.Format("{0:0.#}", Model.DaysWorked) days</h2>
 
 <ol class="calendar cf">
     @foreach(var tile in Model.Tiles)
     {
-        <li class="@tile.DidYouWork.ToLabels("worked", "away", "unknown") @((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", "")) @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))">
-            <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })" data-current-answer="@tile.DidYouWork">
+        <li class="@((tile.Date.Month != Model.TheFirst.Month).ToLabels("filler", "")) @((tile.Date == UserTime.LocalNow().Date).ToLabels("today", ""))">
+            <a href="@Url.Action("Entry", "Day", new { date = tile.Date.ToString("yyyy-MM-dd") })" data-current-answer="@tile.HoursWorked">
                 <span class="day" aria-hidden="true" role="presentation">@((tile.Date == UserTime.LocalNow().Date).ToLabels("Today", tile.Date.Day.ToString()))</span>
                 <h3>@tile.Date.ToShortDateString()</h3>
                 <p>
-                    @Html.Raw(tile.DidYouWork.ToLabels("Yes", "No", "&nbsp;"))
+                    @if (tile.HoursWorked.HasValue)
+                    {
+                        @tile.HoursWorked.Value <span>h</span>
+                    }
+                    else
+                    {
+                        <text>&nbsp;</text>
+                    }
                 </p>
             </a>
         </li>

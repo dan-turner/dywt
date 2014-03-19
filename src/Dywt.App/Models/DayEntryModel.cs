@@ -34,13 +34,13 @@ namespace Dywt.App.Models
 
         public class Previous
         {
-            public Previous(bool didYouWork, DateTimeOffset timeStamp)
+            public Previous(int hoursWorked, DateTimeOffset timeStamp)
             {
-                DidYouWork = didYouWork;
+                HoursWorked = hoursWorked;
                 TimeStamp = timeStamp;
             }
 
-            public bool DidYouWork { get; private set; }
+            public int HoursWorked { get; private set; }
             public DateTimeOffset TimeStamp { get; private set; }
         }
     }
