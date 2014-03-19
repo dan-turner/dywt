@@ -29,7 +29,8 @@ namespace Dywt.App.Models.Factories
 
             if (entry != null)
             {
-                model.PreviousAnswer = new DayEntryModel.Previous(entry.DidYouWork, UserTime.FromUtc(entry.Timestamp));
+                var didYouWork = entry.HoursWorked > 0;
+                model.PreviousAnswer = new DayEntryModel.Previous(didYouWork, UserTime.FromUtc(entry.Timestamp));
             }
 
             return model;

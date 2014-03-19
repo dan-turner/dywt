@@ -9,14 +9,14 @@ namespace Dywt.Domain
     {
         private readonly UserId _userId;
         private readonly DateTime _date;
-        private readonly bool _didYouWork;
+        private readonly int _hoursWorked;
         private readonly DateTime _timestamp;
 
-        public DayEntry(UserId userId, DateTime date, bool didYouWork, DateTime timestamp)
+        public DayEntry(UserId userId, DateTime date, int hoursWorked, DateTime timestamp)
         {
             _userId = userId;
             _date = date;
-            _didYouWork = didYouWork;
+            _hoursWorked = hoursWorked;
             _timestamp = timestamp;
         }
 
@@ -34,9 +34,9 @@ namespace Dywt.Domain
         {
             get { return _date; }
         }
-        public bool DidYouWork
+        public int HoursWorked
         {
-            get { return _didYouWork; }
+            get { return _hoursWorked; }
         }
         public DateTime Timestamp
         {

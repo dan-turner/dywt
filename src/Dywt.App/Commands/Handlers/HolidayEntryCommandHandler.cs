@@ -23,7 +23,7 @@ namespace Dywt.App.Commands.Handlers
         {
             for(var date = command.DateFrom.Value; date <= command.DateTo; date = date.AddDays(1))
             {
-                var entry = new DayEntry(_userId, date, false, SystemTime.UtcNow());
+                var entry = new DayEntry(_userId, date, 0, SystemTime.UtcNow());
                 _session.Store(entry);
             }
         }

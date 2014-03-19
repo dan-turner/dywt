@@ -32,6 +32,7 @@ namespace Dywt.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            MigrationConfig.UpgradeToLatest(documentStore);
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)

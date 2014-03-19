@@ -8,6 +8,8 @@ using System.Text;
 using Dywt.App.Commands.Handlers;
 using Dywt.App.Infrastructure.Autofac;
 using Dywt.App.Models.Factories;
+using Dywt.App.Versioning;
+using Dywt.App.Versioning.Migrations;
 using Raven.Client;
 using Module = Autofac.Module;
 using Dywt.Domain;
@@ -39,6 +41,12 @@ namespace Dywt.App.Infrastructure
                 .Where(IsHandlerType)
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(AppAssembly)
+                .Where(t => typeof (IMigration).IsAssignableFrom(t))
+                .As<IMigration>();
+
+            builder.RegisterType<Migrator>().As<IMigrator>();
         }
 
         private UserId CreateUserId(IPrincipal principal)
