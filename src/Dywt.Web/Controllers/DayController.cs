@@ -31,7 +31,7 @@ namespace Dywt.Web.Controllers
         {
             CommandBus.Execute(command);
             Notifier.Success("Entry saved for {0}", command.Date);
-            return RedirectToAction("Entry", new { date = command.Date.ToString("yyyy-MM-dd") });
+            return RedirectToAction("Index", "Month", new { command.Date.Year, command.Date.Month });
         }
     }
 }
