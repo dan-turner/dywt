@@ -212,7 +212,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonthController.cs" />
     <Compile Include="Extensions\BoolExtensions.cs" />
-    <Compile Include="Filters\AtomicFilter.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Framework\DywtController.cs" />
     <Compile Include="Global.asax.cs">

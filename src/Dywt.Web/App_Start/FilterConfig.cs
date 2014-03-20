@@ -9,7 +9,6 @@ namespace Dywt.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters, bool requireHttps)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new AtomicFilter());
 
             if (requireHttps)
             {

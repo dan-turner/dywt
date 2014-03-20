@@ -29,8 +29,8 @@ namespace Dywt.App.Infrastructure
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<AutofacCommandBus>().As<ICommandBus>();
-            builder.RegisterType<AutofacModelBuilder>().As<IModelBuilder>();
+            builder.RegisterType<AutofacCommandBus>().As<ICommandBus>().InstancePerLifetimeScope();
+            builder.RegisterType<AutofacModelBuilder>().As<IModelBuilder>().InstancePerLifetimeScope();
 
             builder.Register(x => _documentStore.OpenSession()).As<IDocumentSession>()
                 .InstancePerLifetimeScope();

@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using Dywt.App.Commands.Handlers;
+using Raven.Client;
 
 namespace Dywt.App.Infrastructure.Autofac
 {
@@ -18,19 +19,24 @@ namespace Dywt.App.Infrastructure.Autofac
     /// </summary>
     public class AutofacCommandBus : ICommandBus
     {
-        private readonly IComponentContext _container;
+        private readonly ILifetimeScope _scope;
 
-        public AutofacCommandBus(IComponentContext container)
+        public AutofacCommandBus(ILifetimeScope scope)
         {
-            _container = container;
+            _scope = scope;
         }
 
         #region ICommandBus Members
 
         public void Execute<TCommand>(TCommand command)
         {
-            var handler = _container.Resolve<ICommandHandler<TCommand>>();
-            handler.Execute(command);
+            using (var scope = _scope.BeginLifetimeScope())
+            {
+                var handler = scope.Resolve<ICommandHandler<TCommand>>();
+                handler.Execute(command);
+                var session = scope.Resolve<IDocumentSession>();
+                session.SaveChanges();
+            }
         }
 
         #endregion
