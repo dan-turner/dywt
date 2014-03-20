@@ -72,6 +72,7 @@
     <Compile Include="Infrastructure\IModelBuilder.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RavenDB\RavenUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RavenDB\ReadOnlyDocumentSession.cs" />
     <Compile Include="Infrastructure\UserTime.cs" />
     <Compile Include="Versioning\Migrations\HoursWorkedMigration.cs" />
     <Compile Include="Versioning\Migrations\IMigration.cs" />

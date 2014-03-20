@@ -30,7 +30,7 @@ namespace Dywt.App.Infrastructure.Autofac
 
         public void Execute<TCommand>(TCommand command)
         {
-            using (var scope = _scope.BeginLifetimeScope())
+            using (var scope = _scope.BeginLifetimeScope(cfg => cfg.Register(ctx => ctx.Resolve<IDocumentStore>().OpenSession()).As<IDocumentSession>().InstancePerLifetimeScope()))
             {
                 var handler = scope.Resolve<ICommandHandler<TCommand>>();
                 handler.Execute(command);

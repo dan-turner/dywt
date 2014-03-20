@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Dywt.App.Commands.Handlers;
 using Dywt.App.Infrastructure.Autofac;
+using Dywt.App.Infrastructure.RavenDB;
 using Dywt.App.Models.Factories;
 using Dywt.App.Versioning;
 using Dywt.App.Versioning.Migrations;
@@ -29,10 +30,11 @@ namespace Dywt.App.Infrastructure
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<AutofacCommandBus>().As<ICommandBus>().InstancePerLifetimeScope();
-            builder.RegisterType<AutofacModelBuilder>().As<IModelBuilder>().InstancePerLifetimeScope();
+            builder.RegisterType<AutofacCommandBus>().As<ICommandBus>();
+            builder.RegisterType<AutofacModelBuilder>().As<IModelBuilder>();
 
-            builder.Register(x => _documentStore.OpenSession()).As<IDocumentSession>()
+            builder.RegisterInstance(_documentStore).As<IDocumentStore>();
+            builder.Register(x => new ReadOnlyDocumentSession(_documentStore.OpenSession())).As<IDocumentSession>()
                 .InstancePerLifetimeScope();
 
             builder.Register(x => CreateUserId(x.Resolve<IPrincipal>())).AsSelf();
